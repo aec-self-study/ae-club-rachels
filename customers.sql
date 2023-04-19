@@ -1,10 +1,11 @@
-SELECT c.id as customer_id
-, c.name
-, c.email
-, MIN(o.created_at) AS first_order_at
-, COUNT(*) as number_of_orders
+select 
+    c.id as customer_id,
+    c.name,
+    c.email,
+    min(o.created_at) as first_order_at,
+    count(*) as number_of_orders
 from analytics-engineers-club.coffee_shop.customers c
-LEFT JOIN analytics-engineers-club.coffee_shop.orders o ON c.id=o.customer_id
-GROUP BY 1,2,3
-ORDER BY 4
-LIMIT 5;
+left join analytics-engineers-club.coffee_shop.orders o on c.id=o.customer_id
+group by 1,2,3
+order by 4
+limit 5;
